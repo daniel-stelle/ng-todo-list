@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Todo } from './todo';
+import { Todo } from '../components/todo';
 
 @Injectable({
   providedIn: 'root'
@@ -27,16 +27,18 @@ export class TodoDataService {
 
   // DELETE /todos/:id
   deleteTodoById(id: number): TodoDataService {
-    this.todos = this.todos.filter(todo => todo.id != id);
+    this.todos = this.todos.filter(todo => todo.id !== id);
 
     return this;
   }
 
   // PATCH /todos/:id
-  updateTodoById(id: number, values: Object = {}): Todo {
-    let todo = this.getTodoById(id);
+  updateTodoById(id: number, values: object = {}): Todo {
+    const todo = this.getTodoById(id);
 
-    if (!todo) return null;
+    if (!todo) {
+      return null;
+    }
 
     Object.assign(todo, values);
 
@@ -54,7 +56,7 @@ export class TodoDataService {
   }
 
   // Toggle todo complete
-  toggleTodoComplete(todo: Todo) {
+  toggleTodoComplete(todo: Todo): Todo {
     const updateTodo = this.updateTodoById(todo.id, {
       complete: !todo.complete
     });

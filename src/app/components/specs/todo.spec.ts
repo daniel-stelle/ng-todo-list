@@ -1,4 +1,4 @@
-import { Todo } from './todo';
+import { Todo } from '../todo';
 
 describe('Todo', () => {
   it('should create an instance', () => {
@@ -13,5 +13,5 @@ describe('Todo', () => {
 
     expect(todo.title).toEqual('hello');
     expect(todo.complete).toEqual(true);
-  })
+  });
 });
